@@ -23,13 +23,13 @@ class _XylophoneAppState extends State<XylophoneApp> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              keyBoard(1),
-              keyBoard(2),
-              keyBoard(3),
-              keyBoard(4),
-              keyBoard(5),
-              keyBoard(6),
-              keyBoard(7),
+              keyBoard(key: 1, color: Colors.red),
+              keyBoard(key: 2, color: Colors.orange),
+              keyBoard(key: 3, color: Colors.yellow),
+              keyBoard(key: 4, color: Colors.green),
+              keyBoard(key: 5, color: Colors.cyan),
+              keyBoard(key: 6, color: Colors.blue),
+              keyBoard(key: 7, color: Colors.purple),
             ],
           ),
         ),
@@ -42,15 +42,15 @@ class _XylophoneAppState extends State<XylophoneApp> {
     await player.play(AssetSource('audio/note$track.wav'));
   }
 
-  Expanded keyBoard(int key) {
+  Expanded keyBoard({required int key, required Color color}) {
     return Expanded(
-      child: TextButton(
-          onPressed: () async {
-            audioPlay(key);
-          },
-          child: Container(
-            color: const Color(0xffE53935),
-          )),
-    );
+        child: TextButton(
+      onPressed: () async {
+        audioPlay(key);
+      },
+      child: Container(
+        color: color,
+      ),
+    ));
   }
 }
